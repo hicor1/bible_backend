@@ -21,9 +21,10 @@ from rest_framework.permissions import IsAuthenticated
 from .utils import DB ## 직접 작성한 모듈 불러오기
 
 # Create your views here.
+@permission_classes((IsAuthenticated, )) # 권한을 체크합니다. 여기서는 로그인 했는지 여부만 체크하도록 하였습니다.
+@authentication_classes((JSONWebTokenAuthentication,)) # JWT 토큰을 확인합니다. 토큰이 이상이 있으면 에러를 JSON 형식으로 반환합니다.
 class rest_api_test(ModelViewSet):
-    
-    @action(detail=False, methods=['GET'])
+    @action(detail=False, methods=['POST'])
     def gettest(self, request, format = None):
         
         #데이터 작업 수행
