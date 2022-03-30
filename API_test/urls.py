@@ -9,7 +9,6 @@ router = DefaultRouter()
 # 접근방법 : 예)  http://127.0.0.1:8000/API_test/test/gettest/
 router.register(r'test', views.rest_api_test, basename='test')
 
-
 urlpatterns = [
     path('',include(router.urls)),
 ]
